@@ -1,9 +1,9 @@
 +++
 date = '2025-05-20T11:32:49+08:00'
-draft = true
-title = 'Nvim基础配置'
+draft = false
+title = 'Nvim基础配置文件'
 categories = ["nvim"]
-tags = ["nvim", "配置文件"]
+tags = ["nvim", "配置文件", "basic", "keymap"]
 +++
 
 # Neovim的配置文件的位置
@@ -19,6 +19,7 @@ tags = ["nvim", "配置文件"]
 - `:=`：执行一段 lua 代码，并输出结果。
 - `:lua`：执行一段lua代码，但不输出结果。
 
+---
 # Neovim配置文件的格式
 - nvim
     - init.lua
@@ -27,6 +28,7 @@ tags = ["nvim", "配置文件"]
         - plugins/
         - lsp/
 
+---
 # 基础配置文件：`lua/core/basic.lua`
 ```lua
 -- 显示行号
@@ -46,7 +48,14 @@ vim.opt.shiftwidth = 0
 
 -- 文件被其他外部程序修改了之后，neovim 会自动重新加载
 vim.opt.autoread = true
+
+-- 显示特殊字符
+vim.opt.list = true
+-- 将tab与空格显示为其他字符
+vim.opt.listchars = {tab = ">-", trail = "-"}
 ```
+
+---
 # Neovim配置快捷键的格式
 ```lua
 vim.keymap.set(mode,lhs,rhs,opts)
@@ -60,6 +69,13 @@ vim.keymap.set(mode,lhs,rhs,opts)
 `lhs`-快捷键的按键
     - `<C-a>`:表示Ctrl+a
     - `<A-b>`:表示Alt+b
+### <leader>
+自定义快捷键的前缀`leader key`
+```lua
+-- 自定义快捷键前缀为空格,绑定快捷键的时候可以用 <leader> 表示。
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>aa", ":lua print(123)<CR>", {})
+```
 ## rhs：实现功能
 `rhs`:绑定的功能。可以是另一组快捷键，也可以是一个lua函数。
 
@@ -75,39 +91,29 @@ vim.keymap.set({ "n", "i" }, "<C-a>b",
 ## opts：额外设置
 `opts`:table,包含对这个快捷键的额外设置。
 
->例子：
-```lua
-vim.keymap.set("n", "<C-a>b", ":lua print('hello world')<CR>", { silent = true })
--- n，普通视图模式下生效。
--- <C-a>,按下Ctrl+a后，再按下b键。
--- lua..<CR>,调用lua函数输出hello world。
--- silent.., 
-```
-## 关于table
-table，类似于array和object的混合，即其中的元素可以没有键名也可以是键值对，此时快捷键对多个模式生效
-
-**mode参数的table**
-例2-1，若想在inset mode下也能生效。可以扩展mode的参数为table类型。
-**例2-2**
-```lua
-vim.keymap.set({"n","i"},"<C-a>b","<Cmd>lua print('hello world')<CR>",{slient = true})
-```
-- `<Cmd>`:即无视不同模式直接进入command-line mode
-
-#### 2.2.3 关于rhs
-
-#### 2.2.4 关于lhs
-自定义快捷键的前缀`leader key`
-```lua
--- 自定义快捷键前缀为空格,绑定快捷键的时候可以用 <leader> 表示。
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>aa", ":lua print(123)<CR>", {})
-```
-
-#### 2.2.5 关于opts
-opts，快捷键的属性。
+快捷键的属性。
 - `remap`:值为布尔值。默认是`false`(禁用递归映射)
 - `silent`:值为布尔值。`true`(command-line mode下输出的命令在执行后，会被清空)
 - `nowait`:值为布尔值。`true`(按下快捷键后不等待，立刻执行)
 - `desc`:注释
+
+>例子：
+>```lua
+>vim.keymap.set("n", "<C-a>b", ":lua print('hello world')<CR>", { silent = true })
+>-- n，普通视图模式下生效。
+>-- <C-a>,按下Ctrl+a后，再按下b键。
+>-- lua..<CR>,调用lua函数输出hello world。
+>-- silent.., 
+>```
+
+
+## 关于table
+table，类似于array和object的混合，即其中的元素可以没有键名也可以是键值对，此时快捷键对多个模式生效
+
+**mode参数的table**
+>例:若想在inset mode下也能生效。可以扩展mode的参数为table类型。
+>```lua
+>vim.keymap.set({"n","i"},"<C-a>b","<Cmd>lua print('hello world')<CR>",{slient = true})
+>```
+- `<Cmd>`:即无视不同模式直接进入command-line mode
 

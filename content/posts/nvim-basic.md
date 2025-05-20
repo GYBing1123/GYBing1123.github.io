@@ -1,7 +1,7 @@
 +++
 date = '2025-05-20T09:31:09+08:00'
 draft = false 
-title = 'Nvim的基础设定'
+title = 'Nvim的基础知识'
 tags = ["nvim"]
 categories = ["nvim"]
 +++
@@ -15,14 +15,13 @@ categories = ["nvim"]
 # 为什么会选择NeoVim
 作为一个重度的键盘爱好者，`vim`可能是我目前所接触到的编程工具中，最能给我带来编程快乐的编辑器了。其次，在今后的学习中，Linux将作为我主要的开发环境，所以掌握`vim`也是重要的技能。
 
-
+---
 # Vim的按键
 ## normal模式
 **vim命令的基本结构**
 `<verb><range>`
 - verb,动作。包括复制、删除等
 - range,范围。也被叫做`motion`。
-
 ### `verb` 动作
 - `d` delete,删除。
 - `y` yank,复制。
@@ -51,7 +50,6 @@ dit
 - `df:` 向右删除到第一个`:`，包括`:`。
 - `dt:` 向右删除到第一个`:`，不包括`:`。
 
----
 ## exec模式 
 - `:=` 执行一段lua代码并输出结果。
 - `:e` edit,打开一个文件。
@@ -120,6 +118,7 @@ vim.opt.clipboard = "unnamedplus" -- unnamed register + plus register
 - 再次按q结束录制宏。
 - 按@调用宏。如`@a`
 
+---
 # neovim默认支持数字的自动加减
 在 normal mode 下
 - 在数字上按下 Ctrl + a 可以让数字加一
