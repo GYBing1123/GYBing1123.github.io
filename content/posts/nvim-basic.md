@@ -1,6 +1,6 @@
 +++
 date = '2025-05-20T09:31:09+08:00'
-draft = true
+draft = false 
 title = 'Nvim的基础设定'
 tags = ["nvim"]
 categories = ["nvim"]
