@@ -28,6 +28,11 @@ tags = ["nvim", "配置文件", "basic", "keymap"]
         - plugins/
         - lsp/
 
+Neovim 的配置文件是 `*.lua` 格式的。比较推荐的配置方法是：
+- 将 neovim 自身相关的配置文件放置到 core 文件夹中。比如：基础配置，快捷键配置。
+- 将插件的配置文件放置到 plugins 文件夹中，同时这也是 Lazy 插件管理器默认的插件放置目录。
+- Neovim 的相关配置都需要写入 init.lua 才会生效。以上两个文件夹的配置，需要在 init.lua 文件中通过 `require("<path>")` 引用，才能生效。
+
 ---
 # 基础配置文件：`lua/core/basic.lua`
 ```lua
@@ -69,10 +74,10 @@ vim.keymap.set(mode,lhs,rhs,opts)
 `lhs`-快捷键的按键
     - `<C-a>`:表示Ctrl+a
     - `<A-b>`:表示Alt+b
-### <leader>
+### 快捷键前缀：`<leader>`
 自定义快捷键的前缀`leader key`
 ```lua
--- 自定义快捷键前缀为空格,绑定快捷键的时候可以用 <leader> 表示。
+ 自定义快捷键前缀为空格,绑定快捷键的时候可以用 <leader> 表示。
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>aa", ":lua print(123)<CR>", {})
 ```

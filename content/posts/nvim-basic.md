@@ -12,6 +12,10 @@ categories = ["nvim"]
 - 一些vim使用小技巧
 - 工具的配置
 
+该系列文章可以算是我学习以下作者内容的学习记录，再次感谢这些作者。
+- [姜绍彬的博客](https://shaobin-jiang.github.io/blog/)，这是将我引入 NeoVim 之门的博客文章。也是我配置中，引用最多的作者。
+- B站Zexi-Li的[《Neovim从入门到出门》](https://t.bilibili.com/1060196197278416902?share_source=pc_native)系列课程。该课程的配置方式的不同，催生了我想通过Blog记录学习过程的想法。
+
 # 为什么会选择NeoVim
 作为一个重度的键盘爱好者，`vim`可能是我目前所接触到的编程工具中，最能给我带来编程快乐的编辑器了。其次，在今后的学习中，Linux将作为我主要的开发环境，所以掌握`vim`也是重要的技能。
 
@@ -32,7 +36,7 @@ categories = ["nvim"]
     `2f:`(向右查找第二个：)
     `2F:`(向左查找第一个：)
 ### `range` 范围
-** 1.text object(可操作文本单元）**
+**1.text object(可操作文本单元）**
 - `i` inner, 内部的.
 ```bash
 # 删除括号内的内容，如(hello world)中的'hello world'
@@ -46,7 +50,7 @@ dit
 - p passage,段落.
 - t tag,标签.
 
-** 2.f/t 与<verb>的结合 **
+**2.f/t 与<verb>的结合**
 - `df:` 向右删除到第一个`:`，包括`:`。
 - `dt:` 向右删除到第一个`:`，不包括`:`。
 
@@ -55,12 +59,20 @@ dit
 - `:e` edit,打开一个文件。
 
 ---
-# Nvim的文件多开：Bufferline
-在vim中，我们每打开一个文件就会创建一个`buffer`。
-- vim中对文件的编辑，都是在`buffer`中进行的
+# Nvim的文件多开：Buffer
+在vim中，我们每打开一个文件就会创建一个 `buffer`。
+- vim中对文件的编辑，都是在 `buffer` 中进行的
 - 在编辑的过程中，原文件并没有被修改
 - 只有在保存的时候，原文件的内容才会被修改
-- 当一个文件被编辑到一半时，通过`:e <file_name>`打开另一个文件时。该文件则进入`hidden`状态（即放入内存中）
+- 当一个文件被编辑到一半时，通过 `:e <file_name>` 打开另一个文件时。该文件则进入 `hidden` 状态（即放入内存中）
+
+## Buffer/Window/Tab辨析
+
+|名称|辨析|
+|:--:|:--|
+|buffer|文件在内存中的表示|
+|window|buffer 的载体，一个 window 同一时间存在一个 buffer |
+|tab|window的合集,一个 tab 可以放多个 window |
 
 ## buffer文件的查看
 通过`:buffers`可以查看所有的buffer文件
@@ -70,6 +82,7 @@ dit
   3 %a   "plugins.md"                   line 5
 ```
 - 开头的数字代表着buffer的id，通过`buffer+id`可以切换到指定的buffer
+- 若只有两个 buffer，也可以使用 `buffer#` 快速切换到另一个 buffer
 - `a`表示active，`h`代表hidden, `+`代表buffer被修改但没有写入原文件
 
 ## buffer的分屏查看
@@ -87,6 +100,10 @@ dit
 - `:tabclose` 关闭 tab，
 - `:tabs` 列出所有 tab，
 - `:tabnext` `:tabprevious` 前后切换 tab。
+
+## 提升使用的插件
+- [bufferline.nvim]()
+
 
 ---
 # 寄存器（register)
