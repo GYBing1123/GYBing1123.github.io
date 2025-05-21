@@ -1,7 +1,7 @@
 +++
 date = '2025-05-21T09:32:21+08:00'
 draft = false
-title = 'Nvim插件管理器——Lazy'
+title = 'Neovim 插件管理器—— Lazy '
 categories = ["nvim"]
 tags = ["nvim", "lazy"]
 +++

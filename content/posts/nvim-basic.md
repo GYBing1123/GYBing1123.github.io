@@ -1,7 +1,7 @@
 +++
 date = '2025-05-20T09:31:09+08:00'
 draft = false 
-title = 'Nvim的基础知识'
+title = 'NeoVim 的基础知识'
 tags = ["nvim"]
 categories = ["nvim"]
 +++

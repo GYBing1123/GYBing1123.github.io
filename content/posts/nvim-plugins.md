@@ -1,7 +1,7 @@
 +++
 date = '2025-05-21T12:37:38+08:00'
 draft = false
-title = 'Nvim 插件'
+title = 'NeoVim 插件'
 categories = ["nvim"]
 tags = ["nvim", "bufferline", "autopairs", "surround"]
 +++
