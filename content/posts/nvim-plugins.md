@@ -1,7 +1,7 @@
 +++
 date = '2025-05-21T12:37:38+08:00'
 draft = false
-title = 'NeoVim 插件'
+title = 'Neovim 插件'
 categories = ["nvim"]
 tags = ["nvim", "bufferline", "autopairs", "surround"]
 +++
@@ -48,6 +48,51 @@ return{
         { "<leader>bc", ":BufferLinePickClose<CR>", silent = true },
     },
 
+}
+```
+
+## 基于 LSP 功能的扩展
+在成功安装了 LSP 服务的基础上，可以对 bufferline 插件中的 opst 字段下的 `options` 进行设置。可以实现将错误信息的统计结果显示在 buffer 栏的效果。
+
+具体代码如下：
+```lua
+return{
+    'akinsho/bufferline.nvim',
+    lazy = false,
+    version = "*",
+    dependencies = {
+        'nvim-tree/nvim-web-devicons'
+    },
+    -- 添加设置
+    opts = {
+        options = {
+            -- nvim_lsp 是 Neovim 内置的 LSP 诊断系统
+            diagnostics = "nvim_lsp",
+            diagnostics_indicator = function (_, _, diagnostics_dict, _)
+                local indicator = " "
+                for level, number in pairs(diagnostics_dict) do
+                    local symbol
+                    if level == "error" then
+                        symbol = " "
+                    elseif level == "warning" then
+                        symbol = " "
+                    else
+                        symbol = " "
+                    end
+                    indicator = indicator .. number .. symbol
+                end
+                return indicator
+            end
+        }
+    },
+    keys = {
+        { "<leader>bh", ":BufferLineCyclePrev<CR>", silent = true },
+        { "<leader>bl", ":BufferLineCycleNext<CR>", silent = true },
+        { "<leader>bd", ":bdelete<CR>", silent = true },
+        { "<leader>bo", ":BufferLineCloseOthers<CR>", silent = true },
+        { "<leader>bp", ":BufferLinePick<CR>", silent = true },
+        { "<leader>bc", ":BufferLinePickClose<CR>", silent = true },
+    },
 }
 ```
 

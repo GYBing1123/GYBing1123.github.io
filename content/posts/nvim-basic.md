@@ -1,11 +1,11 @@
 +++
 date = '2025-05-20T09:31:09+08:00'
 draft = false 
-title = 'NeoVim 的基础知识'
+title = 'Neovim 的基础知识'
 tags = ["nvim"]
 categories = ["nvim"]
 +++
-这个文章系列主要记录的是，我搭建NeoVim工作环境的过程。
+这个文章系列主要记录的是，我搭建Neovim工作环境的过程。
 重点记录以下内容：
 - 所用到的工具
 - 工具间的协作
@@ -13,10 +13,10 @@ categories = ["nvim"]
 - 工具的配置
 
 该系列文章可以算是我学习以下作者内容的学习记录，再次感谢这些作者。
-- [姜绍彬的博客](https://shaobin-jiang.github.io/blog/)，这是将我引入 NeoVim 之门的博客文章。也是我配置中，引用最多的作者。
+- [姜绍彬的博客](https://shaobin-jiang.github.io/blog/)，这是将我引入 Neovim 之门的博客文章。也是我配置中，引用最多的作者。
 - B站Zexi-Li的[《Neovim从入门到出门》](https://t.bilibili.com/1060196197278416902?share_source=pc_native)系列课程。该课程的配置方式的不同，催生了我想通过Blog记录学习过程的想法。
 
-# 为什么会选择NeoVim
+# 为什么会选择Neovim
 作为一个重度的键盘爱好者，`vim`可能是我目前所接触到的编程工具中，最能给我带来编程快乐的编辑器了。其次，在今后的学习中，Linux将作为我主要的开发环境，所以掌握`vim`也是重要的技能。
 
 ---
