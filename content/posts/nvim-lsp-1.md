@@ -1,6 +1,6 @@
 +++
 date = '2025-05-21T17:54:37+08:00'
-draft = true
+draft = false
 title = 'Neovim 的 Lsp 配置'
 categories = ["nvim"]
 tags = ["nvim", "lsp"]
@@ -17,6 +17,9 @@ Language Server Protocol，语言服务器协议，在开发工具与语言服�
 ## LSP 插件
 LSP 只是一个协议，并不主动提供以上功能。NeoVim 还需要其他插件完成与语言服务器之间的信息交换。
 具体需要的插件有：
-- `mason.nvim` —— 语言服务器的管理器。可以像 Lazy 管理插件那样，管理各种语言服务器。
+- `mason.nvim` —— 语言服务器的管理器。。
 - `nvim-lspconfig` —— 为语言服务器提供默认的客户端配置。
 - `mason-lspconfig.nvim` —— 解决 mason 与 nvim-lspconfig 语言服务器名称不统一的问题
+- `bufferline.nvim` —— 通过配置将错误信息的统计结果，显示到buffer栏上
+- `blink.cmp` —— 代码补全插件
+
