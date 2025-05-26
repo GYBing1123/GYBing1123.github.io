@@ -140,4 +140,18 @@ return{
 }
 
 ```
+---
+# nvim-tree
+
+
+---
+# nvim-lualine
+
+
+---
+# indent-blankline
+
+
+---
+# telescope
 

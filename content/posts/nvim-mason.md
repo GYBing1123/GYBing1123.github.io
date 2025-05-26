@@ -1,7 +1,7 @@
 +++
 date = '2025-05-22T10:27:33+08:00'
 draft = false
-title = 'Nvim Mason'
+title = 'Neovim Mason'
 categroies = ["nvim"]
 tags = ["nvim", "mason", "nvim-lspconfig", "mason-lspconfig"]
 +++
