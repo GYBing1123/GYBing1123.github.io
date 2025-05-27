@@ -62,6 +62,14 @@ require("lazy").setup({
 vim.keymap.set("n", "<leader>L", "<CMD>Lazy<CR>", {desc = "Open Lazy"})
 ```
 
+## 插件配置
+在 Lazy 中使用 table 描述一个插件，具体配置如下
+|配置项|类型|介绍|
+|:--:|:--:|:--|
+|`[1]`|string|插件的连接，`https://github.com` 部分可以省略|
+|dependencies|LazySpec[]|依赖的插件|
+|priority|number|优先级。数字越大，优先级越高|
+
 ---
 # 插件安装：以 Tokyonight 为例
 1. 在 Github 中查找 tokyonight.nvim, 并复制 lua 配置文件
