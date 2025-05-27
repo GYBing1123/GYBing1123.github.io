@@ -8,13 +8,13 @@ tags = ["archlinux", "install"]
 # 正式安装之前
 ---
 ## 1. 准备工作
-### 1.1 确认是UEFIorBIOS
+### 1.1 确认是 `UEFI` 还是 `BIOS`
 - 输入以下命令，查看是否有输出
 ```bash
 ll /sys/firmware/efi/efivars
+# 1. 若有输出，说明是UEFI模式
+# 2. 若没有输出，说明是BIOS模式
 ```
-    1. 若有输出，说明是UEFI模式
-    2. 若没有输出，说明是BIOS模式
 ### 1.2 关闭reflector.service
 2020 年，Archlinux 安装镜像中加入了 reflector 服务，它会自己更新 mirrorlist（软件包管理器 pacman 的软件源）。
 - 查看服务状态
@@ -161,23 +161,23 @@ pacman -S pacman-mirrorlist
 ```
 
 - 使用grep语法将中国区的镜像源写入系统pacman源
-    1. 进入pacman源目录，pacman-mirrorlist软件包下载的mirrorlist.pacman文件也在该目录
+1. 进入pacman源目录，pacman-mirrorlist软件包下载的mirrorlist.pacman文件也在该目录
 ```bash
 cd /etc/pacman.d/
 ```
 
-    2. 使用grep语法
+2. 使用grep语法
 ```bash
 grep China -A 30 mirrorlist.pacman>mirrorlist
 # -A 是 grep 的一个选项，代表 “after”，即输出匹配行之后的若干行。
 ```
 
-    3. 编辑mirrorlist文件，取消注释
+3. 编辑mirrorlist文件，取消注释
 ```bash
 vim mirrorlist
 ```
 
-    4. 再次刷新pacman包库
+4. 再次刷新pacman包库
 ```bash
 pacman -Syy
 ```
@@ -189,17 +189,16 @@ pacstrap /mnt base base-devel linux linux-firmware networkmanager vim \
 man-db man-pages texinfo bash-completion vi sudo openssh \
 dosfstools xfsprogs lvm2
 ```
-    - base base-devel linux linux-firmware linux系统的最小安装软件
-    - networkmanager 网络管理工具
-    - vim 文本编辑器
-    - man-db man-pages texinfo 帮助文档
-    - bash-completion 命令行补全工作
-    - vi 文本编辑器，配合sudo使用
-    - sudo 配合vi，可以使用visudo编辑超级用户
-    - dosfstools 用于管理 FAT 文件系统（包括 FAT12、FAT16 和 FAT32）的工具
-    - xfsprogs 用于管理 XFS 文件系统的工具集
-    - lvm2  Linux 下用于实现逻辑卷管理（Logical Volume Management，LVM）的工具集
-
+- `base` `base-devel` `linux` `linux-firmware` linux系统的最小安装软件
+- `networkmanager` 网络管理工具
+- `vim` 文本编辑器
+- `man-db` `man-pages` `texinfo` 帮助文档
+- `bash-completion` 命令行补全工作
+- `vi` 文本编辑器，配合sudo使用
+- `sudo` 配合vi，可以使用visudo编辑超级用户
+- `dosfstools` 用于管理 FAT 文件系统（包括 FAT12、FAT16 和 FAT32）的工具
+- `xfsprogs` 用于管理 XFS 文件系统的工具集
+- `lvm2`  Linux 下用于实现逻辑卷管理（Logical Volume Management，LVM）的工具集
 
 ---
 ## 5. 生成fstab文件
@@ -215,7 +214,7 @@ cat /mnt/etc/fstab
 
 ---
 ## 6. arch-chroot
-使用arch-chroot /mnt改变根目录，进入安装好的系统。结束预安装
+使用 `arch-chroot /mnt` 改变根目录，进入安装好的系统。结束预安装
 
 # 系统配置
 ---
@@ -250,7 +249,7 @@ echo "ArchLinux.GYBing" > /etc/hostname
 
 - 添加管理员账户
 ArchLinux默认root用户不能通过ssh登录。所以要提前设置好一个有sudo权限的普通用户，普通用户通过ssh登录，并结合sudo命令对服务器进行远程管理。
-    1. 添加账户
+1. 添加账户
 ```bash
 useradd -m -G wheel -s /bin/bash gybing
 # -m：此选项的作用是在创建用户时，同时为该用户创建家目录。
@@ -258,37 +257,38 @@ useradd -m -G wheel -s /bin/bash gybing
 # -s 选项用于设置用户的默认登录 shell。
 ```
 
-    2. 为用户设置密码
+2. 为用户设置密码
 ```bash
 passwd gybing
 ```
 
-    3. 为用户添加sudo权限
+3. 为用户添加sudo权限
 ```bash
 visudo
 # 进入sudo的配置文件后，取消 wheel 组的注释。
 ```
 
-
 ---
 ## 4. 设置网络和ssh自启
+- 网络自启
 ```bash
-# 网络自启
 systemctl enable NetworkManager.service
+```
 
-# ssh自启
+- ssh自启
+```bash
  systemctl enable sshd.service
  ```
 
 ---
 ## 5. grub
 ### 5.1 安装CPU微码
-- 查看CPU信息
+- 查看 CPU 信息
 ```bash
 lscpu
 ```
 
-- 根据CPU信息选择对应的微码
+- 根据 CPU 信息选择对应的微码
 ```bash
 # 1. Intel
 pacman -S intel-ucode
@@ -306,19 +306,20 @@ pacman -S grub efibootmgr
 ```
 
 - 配置grub
-    安装引导
+安装引导
 ```bash
 # 1.安装GRUB引导程序
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 # --target 用于指定目标平台和环境，这里是x86_64架构，并且采用了UEFI启动模式
 # --efi-directory 用于指定EFI系统分区的挂载点
 # --bootloader-id 用于指定UEFI固件中显示的标识符
+
 # 2.安装BIOS引导
 grub-install --target=i386-pc /dev/sda
 #注意这里的/dev/sda是要安装的磁盘，不是分区
 ```
 
-    生成GRUB配置文件
+生成GRUB配置文件
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 # -o 即--output，指定输出目录
