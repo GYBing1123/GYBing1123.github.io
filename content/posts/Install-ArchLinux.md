@@ -2,7 +2,7 @@
 date = '2025-05-27T15:53:30+08:00'
 draft = false
 title = 'ArchLinux的安装'
-categroies = ["archlinux"]
+categories = ["archlinux"]
 tags = ["archlinux", "install"]
 +++
 # 正式安装之前
