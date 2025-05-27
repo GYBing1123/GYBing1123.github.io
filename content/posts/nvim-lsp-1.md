@@ -1,7 +1,7 @@
 +++
 date = '2025-05-21T17:54:37+08:00'
 draft = false
-title = 'Neovim 的 Lsp 配置'
+title = 'neovim 的 Lsp 配置'
 categories = ["nvim"]
 tags = ["nvim", "lsp"]
 +++

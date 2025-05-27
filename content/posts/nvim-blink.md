@@ -1,7 +1,7 @@
 +++
 date = '2025-05-23T08:56:19+08:00'
 draft = true
-title = 'Neovim 代码补全'
+title = 'neovim 代码补全'
 categories = ["nvim"]
 tags = ["nvim", "blink.cmp"]
 +++

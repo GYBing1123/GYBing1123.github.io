@@ -1,7 +1,7 @@
 +++
 date = '2025-05-20T11:32:49+08:00'
 draft = false
-title = 'Neovim 基础配置文件'
+title = 'neovim 基础配置文件'
 categories = ["nvim"]
 tags = ["nvim", "配置文件", "basic", "keymap"]
 +++

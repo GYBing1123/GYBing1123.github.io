@@ -65,7 +65,7 @@ timedatectl set-ntp true
 
 `lsblk -p`
 
-## 1.2 使用cfdisk工具进行分区
+### 1.2 使用cfdisk工具进行分区
 • UEFI模式下的分区情况（推荐）
 |挂载点|分区|类型|建议大小|我的使用|
 |:--:|:--:|:--:|:--:|:--:|
@@ -213,7 +213,11 @@ useradd -m -G wheel -s /bin/bash gybing
 passwd gybing
 
 # 3. 为用户添加sudo权限
-visudo4. 设置网络和ssh自启
+visudo
+```
+
+## 4. 设置网络和ssh自启
+```bash
 # 网络自启
 systemctl enable NetworkManager.service
 
@@ -221,8 +225,8 @@ systemctl enable NetworkManager.service
  systemctl enable sshd.service
  ```
 
-# 5. grub
-##5.1 安装CPU微码
+## 5. grub
+### 5.1 安装CPU微码
 ```bash
 # 查看CPU信息
 lscpu
@@ -233,8 +237,8 @@ pacman -S intel-ucode
 # 2. AMD
 pacman -s amd-ucode
 
-## 5.2 安装grub
-### 5.2.1 单系统
+### 5.2 安装grub
+#### 5.2.1 单系统
 软件安装
 ```bash
 pacman -S grub efibootmgr
@@ -259,7 +263,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # -o 即--output，指定输出目录
 ```
 
-### 5.2.2 多系统
+#### 5.2.2 多系统
 软件安装
 ```bash
 pacman -S grub efibootmgr
@@ -279,7 +283,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-# 6. 最后设置
+## 6. 最后设置
 ```bash
 # 离开chroot
 exit
