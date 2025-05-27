@@ -201,7 +201,9 @@ echo "ArchLinux.GYBing" > /etc/hostname
 ```
 ## 3. 设置账户
 ### 3.1 通过passwd命令为root用户设置密码
-### 3.2 添加管理员账户，ArchLinux默认root用户不能通过ssh登录。所以要提前设置好一个有sudo权限的普通用户，普通用户通过ssh登录，并结合sudo命令对服务器进行远程管理。
+### 3.2 添加管理员账户
+
+ArchLinux默认root用户不能通过ssh登录。所以要提前设置好一个有sudo权限的普通用户，普通用户通过ssh登录，并结合sudo命令对服务器进行远程管理。
 ```bash
 # 1. 添加账户
 useradd -m -G wheel -s /bin/bash gybing
@@ -236,6 +238,7 @@ lscpu
 pacman -S intel-ucode
 # 2. AMD
 pacman -s amd-ucode
+```
 
 ### 5.2 安装grub
 #### 5.2.1 单系统
