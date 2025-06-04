@@ -19,13 +19,13 @@ ll /sys/firmware/efi/efivars
 2020 年，Archlinux 安装镜像中加入了 reflector 服务，它会自己更新 mirrorlist（软件包管理器 pacman 的软件源）。
 - 查看服务状态
 ```bash
-systemctl status refector.service 
+systemctl status reflector.service 
 ```
 
 - 若服务开启中，则手动关闭它
 ```bash
-systemctl stop refector.service
-systemctl disable refector.service
+systemctl stop reflector.service
+systemctl disable reflector.service
 ```
 
 ---
