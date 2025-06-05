@@ -98,6 +98,7 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/jandedobbeleer.omp.json" | 
 -  使用 `Install-Module` 命令，从 `PowerShell` 库安装模块。
 -  在配置文件中通过 `Import-Module` 命令加载配置。
 
+---
 ## 1. 配置图标库
 1.1 在 `pwsh` 中执行以下命令
 ```bash
@@ -107,6 +108,13 @@ Install-Module -Name Terminal-Icons`
 1.2 在配置文件  `$PROFILE` 中添加代码，加载配置
 ```bash
 Import-Module -Name Terminal-Icons
+```
+
+---
+## 2. 设置快捷键
+在配置文件中使用以下格式的命令配置
+```bash
+Set-Alias -Name <别名> -Value <原始命令>
 ```
 
 ---
