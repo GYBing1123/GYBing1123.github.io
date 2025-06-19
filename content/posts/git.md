@@ -11,7 +11,8 @@ Git 是一种分布式的版本控制系统
 
 # Git的最小配置
 在使用 git 之前，要对 git 进行最基本的配置。
-```bash
+
+```lua
 # 配置用户名
 git config --global user.name "username"
 
